@@ -1,0 +1,129 @@
+version: '3.8'
+services:
+  prueba_widitrade_app:
+    container_name: prueba_widitrade_app
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    restart: on-failure
+    environment:
+      XDEBUG_CONFIG: remote_connect_back=1 remote_port=9000 remote_enable=1 remote_autostart=1
+      XDEBUG_KEY: pub
+      PHP_IDE_CONFIG: serverName=DOCKER
+    expose:
+      - 9000
+    volumes:
+      - ./server:/usr/src/app:cached
+      - ~/.ssh:/root/.ssh:ro
+      - ~/.composer:/root/.composer
+    depends_on:
+      - prueba_widitrade_db
+    networks:
+      prueba_widitrade_network:
+          ipv4_address: 172.82.0.2
+  prueba_widitrade_node:
+    container_name: prueba_widitrade_node
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    restart: always
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - FAST_REFRESH=true
+    stdin_open: true
+    tty: true
+    ports:
+      - "4201:4200"
+    volumes:
+      - .:/app:cached
+      - /app/node_modules
+    networks:
+      prueba_widitrade_network:
+          ipv4_address: 172.82.0.7
+  prueba_widitrade_nginx:
+    container_name: prueba_widitrade_nginx
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+      - './server/public:/usr/src/app:cached'
+    ports:
+      - "86:80"
+    depends_on:
+      - prueba_widitrade_app
+    environment:
+      NGINX_FPM_HOST: prueba_widitrade_app
+      NGINX_ROOT: /usr/src/app/public
+    networks:
+      prueba_widitrade_network:
+          ipv4_address: 172.82.0.3
+  prueba_widitrade_db:
+    image: mysql:8.0
+    container_name: prueba_widitrade_db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: prueba_widitrade
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_USER: prueba_widitrade
+      MYSQL_PASSWORD: 1234
+    ports:
+      - "33060:3306"
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    networks:
+      prueba_widitrade_network:
+          ipv4_address: 172.82.0.4
+  prueba_widitrade_phpmyadmin:
+    container_name: prueba_widitrade_phpmyadmin
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      - PMA_ARBITRARY=1
+    depends_on:
+      - prueba_widitrade_db
+    networks:
+      prueba_widitrade_network:
+          ipv4_address: 172.82.0.5
+  prueba_widitrade_redis:
+    container_name: prueba_widitrade_redis
+    image: redis:latest
+    ports:
+      - 6379:6379
+    networks:
+      prueba_widitrade_network:
+          ipv4_address: 172.82.0.6
+  prueba_widitrade_mailhog:
+    platform: linux/x86_64
+    image: mailhog/mailhog
+    container_name: prueba_widitrade_mailhog
+    logging:
+      driver: 'none'
+    ports:
+      - 30250:8025
+    networks:
+      prueba_widitrade_network:
+          ipv4_address: 172.82.0.8
+  prueba_widitrade_localstack:
+    image: localstack/localstack
+    container_name: prueba_widitrade_localstack
+    ports:
+      - "4566:4566"
+      - "4572:4572"
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION=us-east-1
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - "./docker/localstack/:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      prueba_widitrade_network:
+          ipv4_address: 172.82.0.9
+networks:
+    prueba_widitrade_network:
+        external: true
+        name: prueba_widitrade_network
