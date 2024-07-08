@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mx-auto text-center my-3 px-3" [class.col-lg-8]="esModal"
+    [class.col-lg-10]="!esModal" *ngIf="!esModal">
+    <form class="form-signin" autocomplete="off" id="login-form" #loginForm="ngForm"
+      (ngSubmit)="simpleSignIn(loginForm)">
+      <h1 class="h3 my-3 font-weight-normal" *ngIf="titulo">{{titulo}}</h1>
+      <div class="input-group my-3">
+        <input type="text" class="form-control" name="email" required ngModel #email="ngModel"
+          placeholder="Correo">
+      </div>
+      <div class="input-group my-3">
+        <input type="password" class="form-control" name="password" required ngModel #password="ngModel"
+          placeholder="Contraseña">
+      </div>
+      <div class="mb-3 row">
+        <div class="ml-3 col-xs-12 col-sm-12 col-md-4 col-lg-6 text-left ml-auto ">
+          <a class="c-celeste-bishound pointer link-pointer"
+            (click)="navegar({url:'./../register',nombre:''},$event)">Registrate</a>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 text-right mr-auto">
+          <a class="c-celeste-bishound pointer link-pointer"
+            (click)="navegar({url:'./../recovery',nombre:''},$event)">Recuperar Contraseña</a>
+        </div>
+      </div>
+      <button class="btn btn-lg mx-auto btn-primary btn-block"
+        [disabled]="loginForm.value.password=='' || loginForm.value.email==''" type="submit"><i
+          class="fa fa-sign-in"></i> Ingresar</button>
+    </form>
+  </div>
+</div>

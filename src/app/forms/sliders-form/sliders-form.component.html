@@ -1,0 +1,22 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 mx-auto text-left ">
+  <form class="form-signin" autocomplete="off" id="PerfilForm" #PerfilForm="ngForm" (ngSubmit)="guardar()">
+    <h1 class="h3 mb-3 mt-3 font-weight-normal text-dark" *ngIf="titulo && muestraTexto">{{titulo}}</h1>
+    <!-- <input type="hidden" class="form-control" name="id" id="id" *ngIf="perfil" [(ngModel)]="perfil.id" ngModel
+      #id="ngModel"> -->
+    <app-imagenes (imagenEliminar)="eliminarFoto($event)" [esAdmin]="true" carpeta="Avatar" [lista]="sliders" (imagenPrincipal)="cargarImagen($event)"></app-imagenes>
+    <div class="row mt-3">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <button class=" btn btn-lg btn-danger btn-block mr-auto" type="button"><i class="fa fa-times"></i>
+          Cancelar</button>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <button class=" btn btn-lg btn-primary btn-block ml-auto" type="submit">
+          <i class="fa fa-save"></i> Guardar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Inicio Notificaciones -->
+<simple-notifications [options]="options"></simple-notifications>
+<!-- Fin Notificaciones -->

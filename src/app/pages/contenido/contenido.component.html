@@ -1,0 +1,12 @@
+<app-sliders [sliders]="sliders"></app-sliders>
+<!-- <app-busqueda [lista]="mainListaAuxiliar" titulo="Proveedores" (seleccionador)="cargarProveedor($event)"
+  [seleccion]="proveedor"></app-busqueda> -->
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs container">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Contenido</a>
+    <ng-template ngbNavContent class="w-100 d-flex">
+      <app-content-renderer [contentList]="mainLista" class="w-100"></app-content-renderer>
+    </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav" class="w-100 container d-flex" [ngClass]="{'h-max': needMax()}"></div>

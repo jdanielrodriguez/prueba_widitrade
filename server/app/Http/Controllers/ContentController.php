@@ -20,7 +20,7 @@ class ContentController extends Controller
             'status' => 200,
             'msg' => 'Contents Retrieved Successfully',
             'cripto' => $encript->encript(mb_convert_encoding(json_encode($contents), 'UTF-8', 'UTF-8')),
-            'objeto' => null
+            'objeto' => $contents
         );
 
         return new Response($returnData, $returnData['status']);

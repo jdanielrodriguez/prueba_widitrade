@@ -1,0 +1,11 @@
+<div class="modal-header" *ngIf="titulo">
+  <h4 class="modal-title" id="modal-basic-title">{{titulo}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="row mp-0 w-100 modal-content">
+  <app-login-form *ngIf="modulo==1 || modulo==0" [titulo]="titulo" (component)="navegar($event)" ></app-login-form>
+  <app-recovery-form *ngIf="modulo==2" titulo="Recuperar Contraseña" (component)="navegar($event)"></app-recovery-form>
+  <app-register-form *ngIf="modulo==3" titulo="Registrarse" (component)="navegar($event)"></app-register-form>
+</div>

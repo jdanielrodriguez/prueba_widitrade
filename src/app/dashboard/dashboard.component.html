@@ -1,0 +1,37 @@
+<div class="container-fluid container">
+  <div class="row">
+    <div class="fixed-menu col-xs-2 col-sm-2 col-md-2 col-lg-2 ml-auto">
+      <ul ngbNav #nav="ngbNav" [activeId]="active" class="nav-pills flex-column" orientation="vertical">
+        <li [ngbNavItem]="1" (click)="navegar({url:'./dashboard/my-content'})" [class.d-none]="(rol>rolCreador)">
+          <a ngbNavLink>Mi Contenido</a>
+          <ng-template ngbNavContent>
+            <app-my-content [perfil]="perfil" (obtenerPerfil)="obtenerPerfilConf($event)"> </app-my-content>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2" (click)="navegar({url:'./dashboard/my-favorites'})">
+          <a ngbNavLink>Mi Contenido Favorito</a>
+          <ng-template ngbNavContent>
+            <app-my-favorites [perfil]="perfil" (obtenerPerfil)="obtenerPerfilConf($event)">
+            </app-my-favorites>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="3" (click)="navegar({url:'./dashboard/information'})">
+          <a ngbNavLink>Mi Perfil</a>
+          <ng-template ngbNavContent>
+            <app-my-information [perfil]="perfil" (obtenerPerfil)="obtenerPerfilConf($event)"> </app-my-information>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="4" (click)="navegar({url:'./dashboard/landings'})" [class.d-none]="(rol>rolAdmin)">
+          <a ngbNavLink>Landings de Productos</a>
+          <ng-template ngbNavContent>
+            <app-landing [perfil]="perfil" (obtenerPerfil)="obtenerPerfilConf($event)"> </app-landing>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+    <div class="scrollable-content col-xs-9 col-sm-9 col-md-9 col-lg-9 mr-auto">
+      <h3 class="pl-4"> {{ perfil.names }} </h3>
+      <div [ngbNavOutlet]="nav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+    </div>
+  </div>
+</div>

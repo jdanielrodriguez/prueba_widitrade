@@ -1,0 +1,50 @@
+<div class="card mb-4 shadow-sm" style="height: auto; width: auto;">
+  <div class="card-title" style="height:200px;width: 100%;display: flex;padding-top:5%;">
+    <img loading="lazy" class="bd-placeholder-img card-img-top"
+      style="margin-top: auto;margin-left: auto;margin-right: auto;max-height: 200px;height: auto;margin-bottom: auto;width: auto;max-width: 100%;"
+      src="{{getUrl(data)}}">
+  </div>
+  <div class="card-body" style="height:auto;">
+    <p class="card-text text-primary" [class.buscando]="data.id==null">
+      {{((data.nombre!=null)?data.nombre:'')}}
+      <button class="d-none" #resetCarritoAlert (confirm)="pruebaConfirm()" *ngIf="resetCarrito(data)"
+        (cancel)="handleRefusal($event)">
+      </button>
+    </p>
+    <div class="w-100 justify-content-between align-items-center row mx-0">
+      <small class="text-muted col-xs-12 col-sm-12 col-md-12 text-center" [class.buscando]="data.id==null"
+        [class.col-lg-12]="(esAdmin || categorias || !tieneDetalle)">
+        <ngb-rating class="mx-auto" [max]="5" [rate]="data.validacion?data.validacion:5"
+          [readonly]="false"></ngb-rating>
+      </small>
+      <div class="btn-group w-100 mp-0 col-xs-12 col-sm-12 col-md-12 col-lg-12 my-2" *ngIf="eliminarCarrito || pagar">
+        <span>
+          Precio:
+        </span>
+        <span [class.buscando]="data.id==null" class="badge badge-pill badge-primary my-auto ml-auto">
+          Q. {{getPrecio(data)}}
+        </span>
+      </div>
+      <div class="btn-group w-100 mp-0 col-xs-12 col-sm-12 col-md-12 col-lg-12 my-2" *ngIf="eliminarCarrito || pagar">
+        <span>
+          Cantidad:
+        </span>
+        <span [class.buscando]="data.id==null" class="badge badge-pill badge-primary my-auto ml-auto">
+          {{data.cantidad?data.cantidad:1}}
+        </span>
+      </div>
+      <div class="btn-group w-100 mp-0 col-xs-12 col-sm-12 col-md-12 col-lg-12 my-2" *ngIf="eliminarCarrito || pagar">
+        <span>
+          Total:
+        </span>
+        <span [class.buscando]="data.id==null" class="badge badge-pill badge-primary my-auto ml-auto">
+          Q. {{getTotal(data)}}
+        </span>
+      </div>
+      <div class="btn-group col-xs-12 col-sm-12 col-md-12 col-lg-6 ml-auto" *ngIf="adminProv">
+        <button type="button" class="btn btn-sm btn-outline-success ml-auto" [class.buscando]="data.id==null"
+          (click)="autorizarProveedor(data)"> <i class="fa fa-check"></i> Autorizar</button>
+      </div>
+    </div>
+  </div>
+</div>

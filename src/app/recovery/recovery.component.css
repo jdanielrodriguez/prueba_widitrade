@@ -1,0 +1,6 @@
+.h-100{
+  height: calc(100% - 206px) !important;
+}
+.m-auto{
+  margin-top: calc(20% - 250px) !important;
+}

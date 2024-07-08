@@ -1,0 +1,61 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row mp-0" *ngIf="validacion">
+          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 mx-auto">
+            <h3 class="mb-0">Bienvenido a Ordenes.Online</h3>
+            <small>Verifica tu correo electronico</small>
+            <button class="btn btn-block btn-outline-success" *ngIf="proveedor && proveedor.estado && proveedor.estado <= 2"><span
+                class="fa fa-check"></span> Su correo ya se ha verificado</button>
+            <button class="btn btn-block btn-outline-success" *ngIf="proveedor && proveedor.estado && proveedor.estado > 2"><span
+                class="fa fa-check"></span> Verifique su Correo</button>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pt-5">
+          <h4 class="mb-0 text-truncated mt-3">{{perfil.names}}</h4>
+          <!--
+          <p class="lead">{{(perfil.proveedores && perfil.proveedores.length>0)?"PROVEEDOR":((perfil.clientes && perfil.clientes.length>0)?"CLIENTE":"USUARIO")}}</p>
+          <span class="badge badge-success badge-pill tags"
+            *ngIf="perfil.proveedores && perfil.proveedores.length>0 && perfil.proveedores[0].estado===1">Activo</span>
+          <span class="badge badge-warning badge-pill tags"
+            *ngIf="perfil.proveedores && perfil.proveedores.length>0 && perfil.proveedores[0].estado===2">Pendiente de Autorizar</span>
+          <span class="badge badge-info badge-pill tags"
+            *ngIf="perfil.proveedores && perfil.proveedores.length>0 && perfil.proveedores[0].estado===3">Verifique su Correo
+            Electronico</span>
+          <p>
+            <span class="badge badge-primary badge-pill tags" *ngIf="perfil.proveedores && perfil.proveedores.length>0">Proveedor</span>
+            <span class="badge badge-primary badge-pill tags ml-1" *ngIf="perfil.clientes && perfil.clientes.length>0">Cliente</span>
+            <span class="badge badge-primary badge-pill tags ml-1"
+              *ngIf="perfil.direcciones && perfil.direcciones.length>0">Direcciones</span>
+          </p>-->
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mx-auto text-center  d-flex mp-0">
+          <!-- <img
+            [src]="(perfil.imagenes && perfil.imagenes.length>0)?perfil.imagenes[0].url:(perfil.picture?perfil.picture:'https://robohash.org/68.186.255.198.png')"
+            alt="" class=" m-auto badge-pill rounded-circle" style="max-height: 100%;max-width: 100%;"> -->
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+          <h3 class="mb-0">20</h3>
+          <small>Categorias</small>
+          <button class="btn btn-block btn-outline-success"><span class="fa fa-plus-circle"></span> Ver
+            Categorias</button>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+          <h3 class="mb-0">245</h3>
+          <small>Productos</small>
+          <button class="btn btn-outline-info btn-block"><span class="fa fa-user"></span> Ver Productos</button>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+          <h3 class="mb-0">43</h3>
+          <small>Ordenes</small>
+          <button type="button" class="btn btn-outline-primary btn-block"><span class="fa fa-inbox"></span>
+            Ordenes</button>
+        </div>
+        <!--/col-->
+      </div>
+      <!--/row-->
+    </div>
+    <!--/card-block-->
+  </div>
+</div>

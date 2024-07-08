@@ -1,0 +1,14 @@
+.eliminarCarrito {
+  position: absolute;
+  top: 5%;
+  color: red;
+  right: 10%;
+  z-index: 1000
+}
+
+.buscando {
+  line-height: 1.5;
+  background-color: #d6d6d6!important;
+  color: #d6d6d6!important;
+  user-select: none;
+}

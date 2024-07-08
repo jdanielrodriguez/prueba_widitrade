@@ -1,0 +1,5 @@
+<div *ngFor="let content of contentList">
+  <h2>{{ content.title }}</h2>
+  <p>{{ content.description }}</p>
+  <div [innerHTML]="content.content"></div>
+</div>

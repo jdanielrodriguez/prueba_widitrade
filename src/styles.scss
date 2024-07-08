@@ -1,0 +1,763 @@
+@import './vars.scss';
+html, body {
+  height: 100vh;
+}
+*{
+  // outline: solid 2pt red; // Debug Css
+}
+.h-max {
+  height: calc(100% - 225px)!important;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.historiales .card-body {
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+}
+
+.w-90 {
+  width: 90%!important;
+}
+
+.w-95 {
+  width: 95%!important;
+}
+
+.historial {
+  height: 30vh!important;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+/* Estilo de chat Mobile */
+
+@media only screen and (max-width: 500px) {
+  .w-m-100 {
+    width: 100%!important;
+  }
+  .badge-chat:hover {
+    box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.25) inset;
+    cursor: pointer;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+  .badge-chat.active {
+    width: 75vw!important;
+  }
+  .badge-chat {
+    border-radius: 10px 0px 0px 00px;
+    text-decoration: none;
+    height: 8vh;
+    max-width: 75vw;
+    margin-top: auto;
+    box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.25);
+  }
+  .chats-container {
+    margin-bottom: 8vh;
+    height: 50vh;
+    width: 75vw;
+    text-align: right;
+    display: flex;
+    overflow-y: auto;
+  }
+  .chats-container>div:first-child {
+    margin-top: auto!important;
+  }
+  .chat-container.close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  .chat-container {
+    max-width: 90%;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 8vh;
+    left: 5%;
+    background-color: #8f8e8d;
+    padding: 5%;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .mensaje-send {
+    width: 100%!important;
+    height: 10vh!important;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .ml-m-auto {
+    margin-left: auto!important;
+  }
+  .conversation-container {
+    overflow-y: auto;
+    max-height: 50vh;
+    padding: 5%;
+  }
+  .conversation-container .mensaje {
+    display: flex;
+    width: 100%;
+  }
+  .conversation-container .mensaje>div {
+    width: auto;
+    max-width: 75%;
+    color: #ffffff;
+    padding: 5%;
+    margin: 2%;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .conversation-container .mensaje .mensaje-in {
+    background-color: $color-light;
+    margin-right: auto;
+  }
+  .conversation-container .mensaje .mensaje-out {
+    background-color: $color-main;
+    margin-left: auto;
+  }
+}
+
+/* Fin estilo de chat Mobile */
+
+/* Estilo de chat Desktop */
+
+@media only screen and (min-width: 501px) {
+  .w-m-25 {
+    width: 25%!important;
+  }
+  .mensaje-send {
+    width: 100%!important;
+  }
+  .w-m-50 {
+    width: 50%!important;
+  }
+  .ml-m-auto {
+    margin-left: auto!important;
+  }
+  .badge-chat:hover {
+    box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.25) inset;
+    cursor: pointer;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+  .badge-chat.active {
+    width: 20vw!important;
+  }
+  .badge-chat {
+    border-radius: 10px 0px 0px 00px;
+    text-decoration: none;
+    height: 6vh;
+    max-width: 20vw;
+    margin-top: auto;
+    box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.25);
+  }
+  .chats-container {
+    margin-bottom: 5vh;
+    height: 50vh;
+    width: 20vw;
+    text-align: right;
+    display: flex;
+    overflow-y: auto;
+  }
+  .chats-container>div:first-child {
+    margin-top: auto!important;
+  }
+  .chat-container.close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  .chat-profile {
+    width: 100%;
+  }
+  .chat-input {
+    padding: 5%;
+  }
+  .chat-alert {
+    border-radius: 20px 20px 20px 20px;
+  }
+  .chat-container {
+    max-width: 70%;
+    width: 50%;
+    height: auto;
+    position: absolute;
+    bottom: 0px;
+    left: 5%;
+    background-color: #8f8e8d;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .mensaje-send {
+    width: 80%!important;
+    height: 7vh!important;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .ml-m-auto {
+    margin-left: auto!important;
+  }
+  .mensaje-send-btn {
+    border-radius: 0px 10px 10px 0px;
+  }
+  .conversation-container {
+    overflow-y: auto;
+    max-height: 50vh;
+    padding: 5%;
+  }
+  .conversation-container .mensaje {
+    display: flex;
+    width: 100%;
+  }
+  .conversation-container .mensaje>div {
+    width: auto;
+    max-width: 75%;
+    color: #ffffff;
+    padding: 5%;
+    margin: 2%;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .conversation-container .mensaje .mensaje-in {
+    background-color: $color-light;
+    margin-right: auto;
+  }
+  .conversation-container .mensaje .mensaje-out {
+    background-color: $color-main;
+    margin-left: auto;
+  }
+}
+
+/* Estilo de comentarios Mobile */
+
+@media only screen and (max-width: 500px) {
+  .badge-chat:hover {
+    box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.25) inset;
+    cursor: pointer;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+  .badge-chat.active {
+    width: 75vw!important;
+  }
+  .badge-chat {
+    border-radius: 10px 0px 0px 00px;
+    text-decoration: none;
+    height: 8vh;
+    max-width: 75vw;
+    margin-top: auto;
+    box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.25);
+  }
+  .chats-container {
+    margin-bottom: 8vh;
+    height: 50vh;
+    width: 75vw;
+    text-align: right;
+    display: flex;
+    overflow-y: auto;
+  }
+  .chats-container>div:first-child {
+    margin-top: auto!important;
+  }
+  .chat-container.close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  .chat-container {
+    max-width: 90%;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 8vh;
+    left: 5%;
+    background-color: #8f8e8d;
+    padding: 5%;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .mensaje-send {
+    width: 100%!important;
+    height: 10vh!important;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .ml-m-auto {
+    margin-left: auto!important;
+  }
+  .conversation-container {
+    overflow-y: auto;
+    max-height: 50vh;
+    padding: 5%;
+  }
+  .conversation-container .comentario {
+    display: flex;
+    width: 100%;
+  }
+  .conversation-container .comentario>div {
+    width: auto;
+    max-width: 75%;
+    color: #ffffff;
+    padding: 5%;
+    margin: 2%;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .conversation-container .comentario .comentario-in {
+    background-color: $color-light;
+    margin-right: auto;
+  }
+  .conversation-container .comentario .comentario-out {
+    background-color: $color-main;
+    margin-left: auto;
+  }
+}
+
+/* Fin estilo de comentarios Mobile */
+
+/* Estilo de comentarios Desktop */
+
+@media only screen and (min-width: 501px) {
+  .w-m-25 {
+    width: 25%!important;
+  }
+  .mensaje-send {
+    width: 100%!important;
+  }
+  .w-m-50 {
+    width: 50%!important;
+  }
+  .ml-m-auto {
+    margin-left: auto!important;
+  }
+  .badge-chat:hover {
+    box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.25) inset;
+    cursor: pointer;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+  .badge-chat.active {
+    width: 20vw!important;
+  }
+  .badge-chat {
+    border-radius: 10px 0px 0px 00px;
+    text-decoration: none;
+    height: 6vh;
+    max-width: 20vw;
+    margin-top: auto;
+    box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.25);
+  }
+  .chats-container {
+    margin-bottom: 5vh;
+    height: 50vh;
+    width: 20vw;
+    text-align: right;
+    display: flex;
+    overflow-y: auto;
+  }
+  .chats-container>div:first-child {
+    margin-top: auto!important;
+  }
+  .chat-container.close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  .chat-profile {
+    width: 100%;
+  }
+  .chat-input {
+    padding: 5%;
+  }
+  .chat-alert {
+    border-radius: 20px 20px 20px 20px;
+  }
+  .chat-container {
+    max-width: 70%;
+    width: 50%;
+    height: auto;
+    position: absolute;
+    bottom: 0px;
+    left: 5%;
+    background-color: #8f8e8d;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .mensaje-send {
+    width: 80%!important;
+    height: 7vh!important;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .ml-m-auto {
+    margin-left: auto!important;
+  }
+  .mensaje-send-btn {
+    border-radius: 0px 10px 10px 0px;
+  }
+  .conversation-container {
+    overflow-y: auto;
+    max-height: 50vh;
+    padding: 5%;
+  }
+  .conversation-container .comentario {
+    display: flex;
+    width: 100%;
+  }
+  .conversation-container .comentario>div {
+    width: 100%;
+    max-width: 100%;
+    color: #ffffff;
+    padding-bottom: 3%;
+    margin-bottom: 0.5rem;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .comentario-profile {
+    border-radius: 10px 10px 0px 0px;
+  }
+  .comentario-profile>div>.card-img-top {
+    width: 60%;
+    height: 80%;
+  }
+  .conversation-container .comentario .cuerpo {
+    padding: 3%;
+    margin-bottom: 0.5rem;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .conversation-container .comentario .comentario-in {
+    background-color: $color-light;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .conversation-container .comentario .comentario-out {
+    background-color: $color-main;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+/* Fin estilo de chat Desktop */
+
+ngb-datepicker.dropdown-menu.show {
+  width: auto!important;
+}
+
+ngb-datepicker.dropdown-menu {
+  padding: 0;
+}
+
+.text-light {
+  color: #ffffff!important;
+}
+
+.mp-0 {
+  margin: 0!important;
+  padding: 0 !important;
+}
+
+.my-0 {
+  margin-top: 0px!important;
+  margin-bottom: 0px!important;
+}
+
+.p-0 {
+  padding: 0px;
+}
+
+.w-10 {
+  width: 10%!important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.tab-content>.active {
+  width: 100%!important;
+  max-height: calc(100vh - 80px);
+}
+
+ngb-typeahead-window.dropdown-menu.show {
+  width: 100%!important;
+}
+
+app-lista-producto {
+  height: 10rem!important;
+  max-height: 10rem!important;
+  overflow-y: scroll;
+}
+
+.lista-producto-0 {
+  height: auto!important;
+  max-height: 70vh!important;
+}
+
+.link-pointer {
+  color: $color-second!important;
+  text-decoration: none!important;
+  background-color: transparent!important;
+  -webkit-text-decoration-skip: objects!important;
+}
+
+.link-pointer:hover {
+  color: #3d1b09!important;
+  text-decoration: underline!important;
+}
+
+.pestana-pago {
+  width: 5rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.ng-wizard-main {
+  width: 90%!important;
+}
+
+.contenedorAlertas {
+  height: 50vh!important;
+  overflow-y: auto;
+}
+
+.contenedorAlertasDeac {
+  height: 40vh!important;
+  overflow-y: auto;
+}
+
+.contenedorAlertasActivo {
+  height: auto!important;
+  overflow-y: auto;
+  display: none;
+}
+
+.botonEliminar {
+  position: absolute;
+  top: 5%;
+  color: red;
+  font-size: 2rem;
+  right: 25%;
+  z-index: 1000
+}
+
+@media only screen and (max-width: 500px) {
+  app-carrito {
+    margin-left: auto;
+  }
+  .mp-0-mini {
+    margin: 0!important;
+    padding: 0 !important;
+  }
+  ngb-typeahead-window.dropdown-menu.show {
+    width: 93vw!important;
+    left: -20vw!important;
+    margin-right: auto;
+  }
+  .carousel-item {
+    height: auto!important;
+  }
+}
+
+// Payform se puede borrar al verificar que el css del componente se aplique correctamente
+
+/* Espaciado de botones de pago */
+
+@media only screen and (min-width: 501px) {
+  .m-ml-2 {
+    margin-left: 1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .m-ml-2 {
+    margin-top: 1rem;
+  }
+}
+
+.payform {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #ffffff
+}
+
+.payform * {
+  box-sizing: border
+}
+
+.payform .no-gutters {
+  margin-right: 0;
+  margin-left: 0
+}
+
+.payform #card-number {
+  width: 90%
+}
+
+.payform .row {
+  display: flex;
+  flex-wrap: wrap
+}
+
+.payform .col {
+  max-width: 100%;
+  padding: 0;
+  width: 100%
+}
+
+.payform div {
+  display: block
+}
+
+.payform .field-container {
+  padding-bottom: 14px
+}
+
+.payform .field-wrapper {
+  padding-right: 25px
+}
+
+.payform .input-wrapper {
+  position: relative
+}
+
+.payform label {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: #313131;
+  width: 90%;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 17px
+}
+
+.payform input {
+  overflow: visible;
+  margin: 0;
+  font-family: inherit;
+  display: flex;
+  width: 95%;
+  height: 42px;
+  padding: 10px 12px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #313131;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #CBCBCB;
+  border-radius: 3px;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  outline: 0
+}
+
+.payform input:focus {
+  border: 1px solid #5D5D5D;
+  background-color: #FFFDF2
+}
+
+.payform .is-error input {
+  border: 1px solid $color-light
+}
+
+.payform .is-error input:focus {
+  background-color: $color-light
+}
+
+.payform .is-valid input {
+  border: 1px solid #1BB43F
+}
+
+.payform .is-valid input:focus {
+  background-color: #1BB43F0B
+}
+
+.payform .validation-message {
+  color: $color-light;
+  font-size: 10px;
+  font-style: italic;
+  margin-top: 6px;
+  margin-bottom: -5px;
+  display: flex;
+  line-height: 1
+}
+
+.payform .card-expiration-date {
+  padding-right: .5rem
+}
+
+.payform .is-empty input {
+  color: #EBEBEB
+}
+
+.payform .lock-icon {
+  top: calc(50% - 7px);
+  right: 50px
+}
+
+.payform .valid-icon {
+  top: calc(50% - 8px);
+  right: 0px
+}
+
+.payform .error-icon {
+  top: calc(50% - 8px);
+  right: 0px
+}
+
+.payform .card-icon {
+  top: calc(50% - 10px);
+  left: 10px;
+  display: none
+}
+
+.payform .is-empty .card-icon {
+  display: block
+}
+
+.payform .is-focused .card-icon {
+  display: none
+}
+
+.payform .card-type-icon {
+  right: 50px;
+  display: block
+}
+
+.payform .card-type-icon.visa {
+  top: calc(50% - 14px)
+}
+
+.payform .card-type-icon.mastercard {
+  top: calc(50% - 14.5px)
+}
+
+.payform .card-type-icon.amex {
+  top: calc(50% - 14px)
+}
+
+.payform .card-type-icon.discover {
+  top: calc(50% - 14px)
+}
+
+.payform .card-type-icon.jcb {
+  top: calc(50% - 14px)
+}
+
+.payform .card-type-icon.dankort {
+  top: calc(50% - 14px)
+}
+
+.payform .card-type-icon.cartebleue {
+  top: calc(50% - 14px)
+}
+
+.payform .card-type-icon.diners {
+  top: calc(50% - 14px)
+}
+
+.payform .card-type-icon.elo {
+  top: calc(50% - 14px)
+}

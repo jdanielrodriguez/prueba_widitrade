@@ -1,0 +1,13 @@
+<ngb-carousel *ngIf="sliders" [keyboard]="true" [interval]="sliders.length<=1?9000:5000" [pauseOnHover]="true"
+  [wrap]="sliders.length>=1">
+  <ng-template ngbSlide *ngFor="let data of sliders">
+    <div class="w-100 text-center">
+      <img loading="lazy" [src]="data.url" alt="{{data.titulo}}" title="{{data.titulo}}" class="mx-auto sliders">
+      <div class="carousel-caption">
+        <h3>{{data.titulo}}</h3>
+        <p>{{data.descripcion}}</p>
+      </div>
+    </div>
+    <span class="fa fa-times botonEliminar pointer" (confirm)="removerFoto(data)" (cancel)="handleRefusal($event)" *ngIf="esAdmin"></span>
+  </ng-template>
+</ngb-carousel>

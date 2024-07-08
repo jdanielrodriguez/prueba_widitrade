@@ -1,0 +1,24 @@
+<div class="w-100 d-flex">
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 mx-auto">
+    <ng-template class="w-100" #ResultadoPlantilla let-r="result" let-t="term">
+      <img loading="lazy" [src]="r['imagen'] != ''?r['imagen']:imagenDefault" class="mr-1"
+        style="width: auto;height: 20px;">
+      <ngb-highlight [result]="r.nombre" [term]="t" (click)="seleccionarValor(r,click$)"></ngb-highlight>
+    </ng-template>
+    <label for="typeahead-template" class="text-primary">Buscar {{titulo}}:</label>
+    <form class="input-group">
+      <!-- <input id="typeahead-template" #buscando type="text" class="form-control" [(ngModel)]="seleccion"
+        [ngbTypeahead]="search" [resultTemplate]="ResultadoPlantilla" [inputFormatter]="inputFormatBandListValue"
+        [resultFormatter]="resultFormatBandListValue" (focus)="focus$.next($any($event).target.value)"
+        #instance="ngbTypeahead" (click)="seleccionarValor(buscando.value,click$)"
+        (keyup)="limpiarValor(buscando.value,click$)" [ngModelOptions]="{standalone: true}" /> -->
+      <div class="input-group-append">
+        <!-- <button class="btn btn-outline-primary" type="button" (click)="seleccionarValor(buscando.value,click$)">
+          <i class="fa fa-search"></i>
+        </button> -->
+      </div>
+    </form>
+    <hr>
+    <!-- <pre>Model: {{ model | json }}</pre> -->
+  </div>
+</div>

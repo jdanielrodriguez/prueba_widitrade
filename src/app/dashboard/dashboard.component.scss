@@ -1,0 +1,32 @@
+@import "./../../vars.scss";
+.fixed-menu {
+  position: fixed;
+  top: 20%;
+  left: 3%;
+  width: 20%;
+  height: 75%;
+  overflow-y: auto;
+  padding-top: 20px;
+}
+.scrollable-content {
+  margin-left: 24%;
+  overflow-y: auto;
+  height: calc(100vh - 185px);
+  &::-webkit-scrollbar {
+    cursor: pointer !important;
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: lighten($color-light, 20%);
+    cursor: pointer !important;
+    border-radius: 30px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color-bold;
+    border-radius: 30px;
+    cursor: pointer !important;
+    &:hover {
+      background: darken($color-main, 10%);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<!-- Grid View -->
+<div class="row pt-3 mb-3 w-100 px-5" *ngIf="galleryType === 'grid'">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 mb-3" (click)="abrir(data)" style="cursor: pointer"
+    *ngFor="let data of lista">
+    <app-cards [data]="data">
+    </app-cards>
+  </div>
+</div>
+<!-- List View -->
+<div class=" pt-3 mb-3 w-100 px-5" *ngIf="galleryType === 'list'">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mp-0-mini mb-3 service-card" style="cursor: pointer"
+    *ngFor="let data of lista">
+    <app-accordeon [data]="data">
+    </app-accordeon>
+  </div>
+</div>
+
+<div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3 d-flex" *ngIf="numReg>size">
+  <ngb-pagination class="mx-auto" [collectionSize]="numReg" (pageChange)="cambioPagina($event)" [pageSize]="size"
+    [page]="page"></ngb-pagination>
+</div>
+<div class="row w-100 mb-4 mx-auto" *ngIf="lista.length<=0">
+  <ngb-alert class="w-50 mx-auto mt-3" type="danger">No se encuentran
+    {{categorias?'Categorias':tieneDetalle?'Productos':'Proveedores'}} para mostrar</ngb-alert>
+</div>

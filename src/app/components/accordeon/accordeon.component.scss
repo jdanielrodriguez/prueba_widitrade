@@ -1,0 +1,15 @@
+.custom-header::after {
+  content: none;
+}
+.place {
+  width: 100%;
+  margin-top: auto;
+}
+.time {
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  p {
+    display: inline-block;
+  }
+}

@@ -1,0 +1,124 @@
+@import './../../../vars.scss';
+
+label {
+  color: #000000;
+  text-align: center;
+}
+
+.icon {
+  width: 100%;
+  margin-bottom: 0;
+  vertical-align: middle;
+  border-radius: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.icon:active {
+  width: 100%;
+  margin-bottom: 0;
+  vertical-align: middle;
+  border-radius: 7px;
+  border: 1px solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: $color-second;
+  color: white !important;
+}
+
+#hombre:active>.icon {
+  width: 100%;
+  margin-bottom: 0;
+  vertical-align: middle;
+  border-radius: 7px;
+  border: 1px solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: $color-second;
+  color: white !important;
+}
+
+.selectedv {
+  background-color: $color-second;
+  color: white !important;
+}
+
+#uploadImagenFuncion {
+  visibility: hidden;
+  position: absolute;
+  display: none;
+}
+
+.cuadro-img {
+  border-radius: 15px;
+  padding: 5px;
+  height: 283.5px;
+}
+
+.cuadro-img-min {
+  border-radius: 15px;
+  padding: 5px;
+  height: 200px;
+}
+
+#barra_de_progreso {
+  width: 100%;
+}
+
+progress[value] {
+  /* Elimino la apariencia por defecto */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Quito el borde que aparece en Firefox */
+  border: none;
+  /* Añado mis propios estilos */
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  /* Estos estilos solo se aplicaran al fondo de la barra en mozilla */
+  border: 1px inset white;
+  background-color: white;
+  z-index: 1;
+  float: left;
+  margin-top: -46px;
+  height: 46px;
+  border-radius: 7px;
+}
+
+progress::-webkit-progress-value {
+  background: $color-second;
+  color: #ffffff!important;
+  border-radius: 7px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  border-radius: 7px;
+  /*esta sombra es para simular el borde que he aplicado arriba para Mozilla*/
+}
+
+progress::-moz-progress-bar {
+  background: #000000;
+  /* border-radius: 50%; */
+  border-radius: 7px;
+}
+
+.eliminar {
+  position: absolute;
+  top: 5%;
+  color: red;
+  right: 5%;
+  font-size: 2rem!important;
+  z-index: 1049
+}
+
+.agregar {
+  position: absolute;
+  bottom: 5%;
+  color: green;
+  right: 5%;
+  font-size: 2rem!important;
+  z-index: 1049
+}

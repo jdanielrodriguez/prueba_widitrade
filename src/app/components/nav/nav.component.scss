@@ -1,0 +1,61 @@
+@import './../../../vars.scss';
+
+.carritoMenu {
+  left: -6rem!important;
+}
+
+.background-gradient {
+  background: rgb(255, 255, 255) linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(223, 69, 79, 0.88) 10%, rgba(217, 2, 16, 0.85) 90%, rgba(255, 255, 255, 1) 100%);
+}
+
+.admin>.dropdown-menu {
+  background-color: inherit;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  text-decoration: none;
+  background-color: rgba(168, 1, 13, 0.8)!important;
+  color: rgba(255, 255, 255, 1)!important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;
+}
+
+.navbar-collapse {
+  text-align: right;
+}
+
+.p-fixed {
+  display: contents !important;
+}
+
+.nav-fixed {
+  width: 100%;
+  position: fixed;
+  z-index: 1050;
+  top: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.imgContorno {
+  width: 70%!important;
+  shape-outside: circle;
+  shape-image-threshold: 0.5;
+  shape-margin: 20px;
+  float: left;
+}
+
+@media only screen and (max-width: 500px) {
+  .carritoMenu>.dropdown-menu {
+    left: -50vw!important;
+    width: 95vw!important;
+    max-height: 70vh;
+    overflow-y: scroll;
+  }
+}
+
+@media only screen and (min-width: 501px) {
+  .navCollapsed>.dropdown-menu {
+    width: 20vw!important;
+    left: -15rem!important;
+  }
+}

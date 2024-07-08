@@ -1,0 +1,31 @@
+<ngb-accordion #a="ngbAccordion">
+  <ngb-panel id="inputSubirImagen">
+    <ng-template ngbPanelHeader>
+      <div class="row w-100">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mx-auto">
+          <label for="uploadImagenFuncion" class="text icon">Seleccionar archivo</label>
+          <progress value="0" max="100" class="loader_img barra_de_progreso"></progress>
+          <ngb-progressbar *ngIf="mostrarProgreso" [value]="avance" type="primary"></ngb-progressbar>
+          <input type="file" id="uploadImagenFuncion" (change)="subirImagenes($event,{id:0},'uploadImagenFuncion')" />
+          <button type="button" (click)="mySesion.loadingStop();a.toggle('inputSubirImagen')" id="stopLoader"
+            class="form-control border-morado text icon d-none" placeholder="">Detener loader </button>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mx-auto">
+          <div class="cuadro-img d-flex">
+            <span class="fa fa-times eliminar" (click)="resetImagen();a.toggle('inputSubirImagen')"></span>
+            <img loading="lazy" [src]="imagen.url" style="max-height: 100%;" class="img-thumbnail m-auto" alt=""
+              srcset="">
+            <span class="fa fa-check agregar" (click)="enviarImagen();a.toggle('inputSubirImagen')"></span>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-3">
+  <app-sliders [sliders]="lista" [esAdmin]="esAdmin" (imagenEliminar)="eliminarImagen($event)"></app-sliders>
+</div>

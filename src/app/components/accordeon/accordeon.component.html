@@ -1,0 +1,38 @@
+<ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
+  <ngb-panel id="custom-panel-1">
+    <ng-template ngbPanelHeader let-opened="opened">
+      <div class="accordion-button custom-header justify-content-between" [class.collapsed]="!opened">
+        <button ngbPanelToggle class="accordion-button" [class.collapsed]="!opened">
+          <p class="m-0">{{ data.name }} - <small>{{ opened ? (data.price | currency: 'GTQ' : 'symbol-narrow') :
+              (data.date_start | date:'dd-MM-YYYY') }}</small></p>
+        </button>
+      </div>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center d-flex align-middle">
+          <img loading="lazy" class="bd-placeholder-img card-img-top"
+            style="margin-top: auto;margin-left: auto;margin-right: auto;max-height: 200px;height: auto;margin-bottom: auto;width: auto;max-width: 100%;"
+            src="{{getUrl(data)}}">
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 d-flex align-middle">
+          <app-calendar class="m-auto" *ngIf="data.date_start" [calendarDate]="data.date_start"></app-calendar>
+        </div>
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 d-grid align-middle">
+          <div class="place">
+            {{ data.name }} -
+            {{ data.address }}
+          </div>
+          <div class="time">
+            <p>{{ data.date_start | date:'shortTime' }}</p> | {{ data.description }}
+          </div>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right d-flex align-middle">
+          <button type="button" class="btn btn-info my-auto ml-auto" (click)="comprarBoletos(data)">
+            {{ data.price | currency: 'GTQ' : 'symbol-narrow' }}
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

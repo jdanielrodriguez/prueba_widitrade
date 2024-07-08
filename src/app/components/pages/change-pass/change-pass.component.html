@@ -1,0 +1,31 @@
+<form class="my-3 col-xs-12 col-sm-12 col-md-12 col-lg-8 mx-auto" autocomplete="off" #recoveryForm="ngForm"
+  (ngSubmit)="simpleRestore(recoveryForm)" *ngIf="!esModal">
+  <div class="modal-header" *ngIf="titulo">
+    <h4 class="modal-title" id="modal-basic-title">{{titulo}}</h4>
+  </div>
+  <div class="modal-body">
+    <div class="form-group" *ngIf="oldRequired">
+      <div class="input-group mb-3">
+        <input type="password" class="form-control bishound-input" placeholder="Escribe otra vez la contraseña actual"
+          id="old_pass" name="old_pass" required ngModel #old_pass="ngModel">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group mb-3">
+        <input type="password" class="form-control bishound-input" placeholder="Crea una nueva contraseña" id="new_pass"
+          name="new_pass" required ngModel #new_pass="ngModel">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group mb-3">
+        <input type="password" class="form-control bishound-input" placeholder="Confirma tu nueva contraseña"
+          id="new_pass_rep" name="new_pass_rep" required ngModel #new_pass_rep="ngModel">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-lg btn-primary btn-block mx-auto"
+      [disabled]="(new_pass.value!=new_pass_rep.value) || new_pass.value==''">Cambiar Contraseña</button>
+    <button type="button" class="btn btn-outline-primary" (click)="closeModal()" *ngIf="esModal">Close</button>
+  </div>
+</form>
